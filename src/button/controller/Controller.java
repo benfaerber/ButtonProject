@@ -1,9 +1,6 @@
 package button.controller;
 
 import button.view.SampleFrame;
-
-import java.awt.Component;
-
 import javax.swing.JOptionPane;
 public class Controller
 {

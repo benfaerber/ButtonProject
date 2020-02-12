@@ -4,6 +4,7 @@ import button.controller.Controller;
 import javax.swing.JFrame;
 public class SampleFrame extends JFrame
 {
+	private static final long serialVersionUID = 1L;
 	private Controller controller;
 	private SamplePanel panel;
 	
