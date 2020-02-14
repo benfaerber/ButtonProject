@@ -11,6 +11,8 @@ import java.awt.Color;
 
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 public class SamplePanel extends JPanel
 {
@@ -33,25 +35,49 @@ public class SamplePanel extends JPanel
 		this.appLayout = new SpringLayout();
 		this.sampleButton = new JButton("Click me!!!");
 		
-		this.sampleLabel = new JLabel(labelText + "0 times");
+		appLayout.putConstraint(SpringLayout.WEST, sampleButton, 168, SpringLayout.WEST, this);
 		
 		setupPanel();
 		setupLayout();
 		setupListeners();
 	}
 	
-	public void setupPanel()
+	private void setupPanel()
 	{
-		
+		this.setLayout(appLayout);
+		this.setBackground(Color.gray);
+		this.sampleLabel = new JLabel(labelText + "0 times");
+		appLayout.putConstraint(SpringLayout.SOUTH, sampleLabel, -257, SpringLayout.SOUTH, this);
+		appLayout.putConstraint(SpringLayout.NORTH, sampleButton, 6, SpringLayout.SOUTH, sampleLabel);
+		this.add(sampleLabel);
+		this.add(sampleButton);
 	}
 	
-	public void setupLayout()
+	private void setupLayout()
 	{
-		
+		appLayout.putConstraint(SpringLayout.EAST, sampleLabel, -101, SpringLayout.EAST, this);
 	}
 	
-	public void setupListeners()
+	private void setupListeners()
 	{
-		
+		sampleButton.addMouseListener(new MouseAdapter() {
+			public void actionPerformed(ActionEvent e) {
+				updateDisplay();
+			}
+		});
+	}
+	
+	private void updateDisplay()
+	{
+		controller.updateCount();
+		this.setBackground(updateColor());
+		sampleLabel.setText(labelText + controller.getCount() + " times!");
+	}
+	
+	private Color updateColor()
+	{
+		return null;
+		//Color randomColor = null;
+		//int red = (int) (Math)
 	}
 }
